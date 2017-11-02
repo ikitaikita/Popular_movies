@@ -41,6 +41,9 @@ public class Movie {
     @SerializedName("genre_ids")
     @Expose
     private List<Integer> genreIds = null;
+    @SerializedName("genres")
+    @Expose
+    private List<Genre> genres = null;
     @SerializedName("backdrop_path")
     @Expose
     private String backdropPath;
@@ -53,6 +56,7 @@ public class Movie {
     @SerializedName("release_date")
     @Expose
     private String releaseDate;
+
 
     public Integer getVoteCount() {
         return voteCount;
@@ -133,6 +137,10 @@ public class Movie {
     public void setGenreIds(List<Integer> genreIds) {
         this.genreIds = genreIds;
     }
+
+    public List<Genre> getGenres() { return genres; }
+
+    public void setGenres(List<Genre> genres) { this.genres = genres; }
 
     public String getBackdropPath() {
         return backdropPath;

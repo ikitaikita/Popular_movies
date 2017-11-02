@@ -50,4 +50,6 @@ dependencies {
     // View Injection
     compile 'com.jakewharton:butterknife:7.0.1'
 
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
+
 }

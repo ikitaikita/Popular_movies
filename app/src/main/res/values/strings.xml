@@ -4,4 +4,5 @@
     <string name="genre">GENRE</string>
     <string name="msg_no_data">No data returned. Pull to refresh.</string>
     <string name="msg_empty_search_result">No result found.</string>
+    <string name="movie_loading_unsuccessful">Unable to load the movie </string>
 </resources>

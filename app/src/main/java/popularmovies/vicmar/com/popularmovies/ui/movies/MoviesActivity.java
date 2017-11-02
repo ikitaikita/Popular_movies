@@ -23,6 +23,7 @@ import popularmovies.vicmar.com.popularmovies.R;
 import popularmovies.vicmar.com.popularmovies.data.models.Movie;
 import popularmovies.vicmar.com.popularmovies.di.Injector;
 import popularmovies.vicmar.com.popularmovies.ui.base.RecyclerViewListener;
+import popularmovies.vicmar.com.popularmovies.ui.movie.MovieActivity;
 
 public class MoviesActivity extends AppCompatActivity implements MoviesContract.View{
 
@@ -219,10 +220,10 @@ public class MoviesActivity extends AppCompatActivity implements MoviesContract.
 
     @Override
     public void showMovieDetail(int movieId) {
-        /*Intent intent = new Intent( MoviesActivity.this, MovieActivity.class );
-        intent.putExtra( MovieActivity.EXTRA_BOOK_ID, movieId );
-        startActivity(intent);*/
-        Toast.makeText( this,"detail of movie with id " + movieId, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent( MoviesActivity.this, MovieActivity.class );
+        intent.putExtra( MovieActivity.EXTRA_MOVIE_ID, movieId );
+        startActivity(intent);
+        //Toast.makeText( this,"detail of movie with id " + movieId, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -232,10 +233,6 @@ public class MoviesActivity extends AppCompatActivity implements MoviesContract.
         }
     }
 
-    @Override
-    public void showEmptySearchResult() {
-        showNotification(getString(R.string.msg_empty_search_result));
-    }
 
     private void showNotification(String message){
         notiText.setVisibility(View.VISIBLE);

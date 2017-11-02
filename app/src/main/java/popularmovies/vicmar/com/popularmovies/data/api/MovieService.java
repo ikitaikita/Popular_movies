@@ -3,6 +3,7 @@ package popularmovies.vicmar.com.popularmovies.data.api;
 
 import popularmovies.vicmar.com.popularmovies.data.models.Movie;
 import popularmovies.vicmar.com.popularmovies.data.models.MovieResults;
+import popularmovies.vicmar.com.popularmovies.data.models.VideoResults;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -22,12 +23,12 @@ public interface MovieService
 
 
     @GET( "movie/{id}" )
-    Call<Movie> getMovie (@Path( "id" ) Long id,
+    Call<Movie> getMovie (@Path( "id" ) int id,
                           @Query("api_key") String api_key);
 
     @GET( "movie/{id}/videos" )
-    Call<MovieResults> getMovieVideos (@Path( "id" ) Long id,
-                                   @Query("api_key") String api_key);
+    Call<VideoResults> getMovieVideos (@Path( "id" ) Long id,
+                                       @Query("api_key") String api_key);
     @GET( "genre/{id}/movies" )
     Call<MovieResults> getMovieListByGenre (@Path( "id" ) Long id,
                                        @Query("api_key") String api_key);

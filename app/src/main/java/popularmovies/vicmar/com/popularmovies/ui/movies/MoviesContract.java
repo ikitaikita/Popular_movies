@@ -23,16 +23,14 @@ public interface MoviesContract {
 
         void stopLoadingIndicator();
 
-        void showEmptySearchResult();
+
     }
 
     interface Presenter  {
         void loadMovies();
 
-        void getMovie(int movieId);
-        void loadGenreMovies(long genreId);
+    void getMovie(int movieId);
+    void loadGenreMovies(long genreId);
 
-
-        void search(String questionTitle);
     }
 }

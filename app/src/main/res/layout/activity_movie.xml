@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageview_header"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:contentDescription="description hero"
+        android:fitsSystemWindows="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="w,16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+    <ImageView
+        android:id="@+id/imageview_poster"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:contentDescription="description poster"
+        app:layout_constraintBottom_toBottomOf="@+id/imageview_header"
+        app:layout_constraintDimensionRatio="w,400:576"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_header"
+        app:layout_constraintVertical_bias="0.406"
+         />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_vertical_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.041666668"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textview_movie_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="template_movie_title"
+        android:textColor="@color/purple"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+
+        app:layout_constraintStart_toEndOf="@+id/imageview_poster"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_header"
+        tools:text="Beauty and the Beast"
+        tools:layout_editor_absoluteX="128dp" />
+
+    <TextView
+        android:id="@+id/textview_movie_genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="template_movie_details"
+        android:textColor="@color/red"
+        app:layout_constraintStart_toEndOf="@+id/imageview_poster"
+        app:layout_constraintTop_toBottomOf="@+id/textview_movie_title"
+        tools:text="genreeeeeeeee"
+        tools:layout_editor_absoluteX="128dp" />
+    <TextView
+        android:id="@+id/textview_movie_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="template_movie_date"
+        android:textColor="@color/green"
+        app:layout_constraintStart_toEndOf="@+id/imageview_poster"
+        app:layout_constraintTop_toBottomOf="@+id/textview_movie_genre"
+        tools:text="2017-4-08"
+        tools:layout_editor_absoluteX="128dp" />
+
+
+
+
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_vertical_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="369dp" />
+
+
+
+    <!--View
+        android:id="@+id/view_divider"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/gray"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="16dp" /-->
+
+    <View
+        android:id="@+id/view_divider_below"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/gray"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/textview_movie_date"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textview_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="sans-serif"
+        android:paddingBottom="16dp"
+        android:text="template_movie_description"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/textview_movie_date"
+        android:layout_marginLeft="16dp" />
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube_view"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:fitsSystemWindows="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="w,16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_end"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_start"
+        app:layout_constraintTop_toBottomOf="@+id/textview_description"
+         />
+</android.support.constraint.ConstraintLayout><!--</android.support.v4.widget.NestedScrollView>-->
