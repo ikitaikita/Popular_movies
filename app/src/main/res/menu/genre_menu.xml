@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".ui.movies.MoviesActivity">
+    <item android:id="@+id/action_settings" android:title="@string/genre"
+        android:orderInCategory="99" app:showAsAction="always" >
+        <menu android:id="@+id/subMenu" >
+            <item
+                android:id="@+id/genre_all"
+                android:orderInCategory="100"
+                app:showAsAction="never"
+                android:title="All"/>
+            <item
+                android:id="@+id/genre_action"
+                android:orderInCategory="101"
+                app:showAsAction="never"
+                android:title="Action"/>
+            <item
+                android:id="@+id/genre_adventure"
+                android:orderInCategory="102"
+                app:showAsAction="never"
+                android:title="Adventure"/>
+            <item
+                android:id="@+id/genre_animation"
+                android:orderInCategory="103"
+                app:showAsAction="never"
+                android:title="Animation"/>
+
+            <item
+                android:id="@+id/genre_comedy"
+                android:orderInCategory="104"
+                app:showAsAction="never"
+                android:title="Comedy"/>
+            <item
+                android:id="@+id/genre_crime"
+                android:orderInCategory="105"
+                app:showAsAction="never"
+                android:title="Crime"/>
+            <item
+                android:id="@+id/genre_documentary"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Documentary"/>
+            <item
+                android:id="@+id/genre_drama"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Drama"/>
+            <item
+                android:id="@+id/genre_family"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Family"/>
+            <item
+                android:id="@+id/genre_fantasy"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Fantasy"/>
+            <item
+                android:id="@+id/genre_history"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="History"/>
+            <item
+                android:id="@+id/genre_horror"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Horror"/>
+            <item
+                android:id="@+id/genre_music"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Music"/>
+            <item
+                android:id="@+id/genre_mystery"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Mystery"/>
+            <item
+                android:id="@+id/genre_romance"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Romance"/>
+            <item
+                android:id="@+id/genre_fiction"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Science Fiction"/>
+            <item
+                android:id="@+id/genre_tv"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="TV Movie"/>
+            <item
+                android:id="@+id/genre_thriller"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Thriller"/>
+            <item
+                android:id="@+id/genre_war"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="War"/>
+            <item
+                android:id="@+id/genre_western"
+                android:orderInCategory="106"
+                app:showAsAction="never"
+                android:title="Western"/>
+
+        </menu>
+    </item>
+
+</menu>
