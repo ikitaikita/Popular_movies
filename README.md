@@ -1,3 +1,3 @@
 # Popular_movies
 
-First commit: mvp, retrofit2, gson, picasso, timber, butterknife, recyclerview, cardview
+Master branch: mvp, retrofit2, gson, picasso, timber, butterknife, recyclerview, cardview
