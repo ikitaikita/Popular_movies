@@ -8,8 +8,8 @@ public class Constants {
 
 
 
-    private static String API_KEY = "9a843c387fae60e9817d91f3e30cfdfb";
-    public static String YOUTUBE_API_KEY= "AIzaSyDghiHgc_V3SRFbrdMhAjr4Gh3MZcwr0PE";
+    private static String API_KEY = "API_KEY";
+    public static String YOUTUBE_API_KEY= "YOUTUBE_APIKEY";
 
     public static String BASE_URL_MOVIES = "http://api.themoviedb.org/3/";
     public static String BASE_URL_POSTER = "http://image.tmdb.org/t/p/w500";
