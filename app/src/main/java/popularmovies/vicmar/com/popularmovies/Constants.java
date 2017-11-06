@@ -57,6 +57,10 @@ public class Constants {
     public static String GENRE_WAR_STR = "War";
     public static String GENRE_WESTERN_STR = "Western";
 
+    //VIDEOS
+
+    public static String TYPE_TRAILER ="Trailer";
+
     public static String getApiKey() {
         return API_KEY;
     }

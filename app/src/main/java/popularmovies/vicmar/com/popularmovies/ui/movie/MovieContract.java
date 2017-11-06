@@ -16,7 +16,7 @@ public class MovieContract {
 
         void showMovie(Movie movie);
 
-        void showVideos (List<Video> videos);
+        void showVideo (List<Video> videos);
 
         void showErrorMessage(String error);
 

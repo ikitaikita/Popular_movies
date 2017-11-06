@@ -26,7 +26,10 @@ public class GenreUtils {
             genresString.append(genre.getName()).append(",");
 
         }
-        return genresString.toString();
+
+        //return genresString.toString();
+        return  genresString.toString().substring(0, genresString.length()-1);
+
 
     }
 

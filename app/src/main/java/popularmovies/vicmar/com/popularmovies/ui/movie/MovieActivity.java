@@ -1,7 +1,9 @@
 package popularmovies.vicmar.com.popularmovies.ui.movie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresPermission;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -30,6 +32,7 @@ import popularmovies.vicmar.com.popularmovies.ui.movies.MoviesAdapter;
 import popularmovies.vicmar.com.popularmovies.ui.movies.MoviesContract;
 import popularmovies.vicmar.com.popularmovies.ui.movies.MoviesPresenter;
 import popularmovies.vicmar.com.popularmovies.util.GenreUtils;
+import popularmovies.vicmar.com.popularmovies.util.VideoUtils;
 
 /**
  * Created by vik on 02/11/2017.
@@ -38,6 +41,7 @@ import popularmovies.vicmar.com.popularmovies.util.GenreUtils;
 public class MovieActivity extends YouTubeBaseActivity implements MovieContract.View, YouTubePlayer.OnInitializedListener{
 
     public static String EXTRA_MOVIE_ID="EXTRA_MOVIE_ID";
+    private static final int RECOVERY_REQUEST = 1;
 
 
 
@@ -47,7 +51,7 @@ public class MovieActivity extends YouTubeBaseActivity implements MovieContract.
     @Bind(R.id.textview_movie_date) TextView movieDate;
     @Bind(R.id.textview_description) TextView movieDescription;
 
-    @Bind(R.id.imageview_header) ImageView imageHeader;
+   // @Bind(R.id.imageview_header) ImageView imageHeader;
     @Bind(R.id.imageview_poster) ImageView poster;
 
 
@@ -64,6 +68,7 @@ public class MovieActivity extends YouTubeBaseActivity implements MovieContract.
 
     private MoviePresenter presenter;
     private Movie movie;
+    private String keyvideo;
     private ConstraintSet mConstraintSetNormal = new ConstraintSet();
 
 
@@ -76,14 +81,25 @@ public class MovieActivity extends YouTubeBaseActivity implements MovieContract.
         refreshLayout = (SwipeRefreshLayout)findViewById(R.id.refresh);
         notiText = (TextView)findViewById(R.id.notiText);*/
 
-        initializeYouTube();
+
         mConstraintSetNormal.clone(mRootLayout);
         initializePresenter();
         presenter.loadMovie(getIntent().getIntExtra(EXTRA_MOVIE_ID, 1));
+        presenter.loadVideosFromMovie(getIntent().getIntExtra(EXTRA_MOVIE_ID, 1));
 
     }
-    private void initializeYouTube(){
+
+    @Override
+    public void startActivityForResult(@RequiresPermission Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+    }
+
+
+    private void initializeYouTube(String keyvideo){
+        this.keyvideo = keyvideo;
         youTubeView.initialize(Constants.YOUTUBE_API_KEY, this);
+
+
     }
     private void initializePresenter() {
         /*DaggerQuestionsComponent.builder()
@@ -107,10 +123,10 @@ public class MovieActivity extends YouTubeBaseActivity implements MovieContract.
                 .load(Constants.BASE_URL_POSTER + movie.getPosterPath())
                 .noFade()
                 .into(poster);
-        Picasso.with(this)
+        /*Picasso.with(this)
                 .load(Constants.BASE_URL_POSTER + movie.getPosterPath())
                 .noFade()
-                .into(imageHeader);
+                .into(imageHeader);*/
 
     }
     @Override
@@ -122,7 +138,9 @@ public class MovieActivity extends YouTubeBaseActivity implements MovieContract.
     }
 
     @Override
-    public void showVideos(List<Video> videos) {
+    public void showVideo(List<Video> videos) {
+        Video video = VideoUtils.getTrailerFromVideos(videos);
+        initializeYouTube(video.getKey());
 
     }
 
@@ -135,18 +153,37 @@ public class MovieActivity extends YouTubeBaseActivity implements MovieContract.
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
         if (!wasRestored) {
-            youTubePlayer.cueVideo("c38r-SAnTWM"); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
-            //youTubePlayer.loadVideo("c38r-SAnTWM");
+            youTubePlayer.cueVideo(keyvideo); // Plays https://www.youtube.com/watch?v=fhWaJi1Hsfo
+           //youTubePlayer.loadVideo(keyvideo);
+
         }
-       //youTubePlayer.cueVideo("c38r-SAnTWM");
+
+
     }
 
     @Override
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-        Toast.makeText(this, "Oh no!"+youTubeInitializationResult.toString(),Toast.LENGTH_LONG).show();
+
+        if (youTubeInitializationResult.isUserRecoverableError()) {
+            youTubeInitializationResult.getErrorDialog(this, RECOVERY_REQUEST).show();
+        } else {
+            String error = getString(R.string.player_error)+ youTubeInitializationResult.toString();
+            showErrorMessage(error);
+            //Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+        }
+
     }
 
     protected YouTubePlayer.Provider getYouTubePlayerProvider() {
         return youTubeView;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RECOVERY_REQUEST) {
+
+            getYouTubePlayerProvider().initialize(Constants.YOUTUBE_API_KEY, this);
+        }
     }
 }

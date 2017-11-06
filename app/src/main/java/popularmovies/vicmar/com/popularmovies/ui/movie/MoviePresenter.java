@@ -61,7 +61,7 @@ public class MoviePresenter implements MovieContract.Presenter {
                 if ( response.isSuccessful() )
                 {
 
-                    view.showVideos( response.body().getVideoResults() );
+                    view.showVideo( response.body().getVideoResults() );
                     Timber.i( "Movies data was loaded from API." );
                 }
             }
